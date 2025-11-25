@@ -1,64 +1,122 @@
-# AutoDoc-LiteLLM
+# **AutoDoc-LiteLLM**
 
-AutoDoc-LiteLLM is a small, self-contained demo that shows how to:
+AutoDoc-LiteLLM is a small, self-contained demo script that shows how to:
 
-- call an LLM through **LiteLLM**
-- extract simple metadata from a short document
-- represent that metadata as **RDF** using a minimal ontology
-- validate the RDF with **SHACL**
-- run a very small **semantic search** using sentence-transformers
+* call an LLM through **LiteLLM**
+* extract simple metadata from a document
+* build a minimal **RDF** graph using a small ontology
+* validate the graph using **SHACL**
+* run a lightweight **semantic search** using sentence-transformers
 
-The goal is to keep the code easy to read and easy to extend, not to be production-ready.
-
----
-
-## How it works
-
-1. A short example document is defined as a Python string.
-2. The script calls an LLM (through LiteLLM) to extract:
-   - `title`
-   - `topic`
-   - `domain`
-3. The metadata is converted into an RDF graph using `rdflib` and a tiny ontology in `ontology.ttl`.
-4. The RDF graph is validated against SHACL shapes from `shapes.ttl` using `pyshacl`.
-5. The same document text is embedded with `sentence-transformers`, and a simple semantic search is performed for one example query.
-
-All of this happens inside `main.py`.
+The focus is clarity and readability.
+This is not a production system — just a compact, educational example.
 
 ---
 
-## File overview
+## **How it works**
 
-- `main.py`  
-  Main script. Runs the full demo: metadata extraction → RDF graph → SHACL validation → semantic search.
+1. A short example document is defined inside `main.py`.
+2. The script uses LiteLLM to call an LLM and extract three fields:
 
-- `ontology.ttl`  
-  Minimal RDF/OWL ontology defining a `Document` class and a few datatype properties.
+   * `title`
+   * `topic`
+   * `domain`
+3. The extracted metadata is inserted into an RDF graph using `rdflib` and the ontology in `ontology.ttl`.
+4. The graph is validated against SHACL shapes from `shapes.ttl` using `pyshacl`.
+5. The same document text is embedded using sentence-transformers, and a simple semantic search is run for one example query.
 
-- `shapes.ttl`  
-  SHACL shapes that require each `Document` to have a title, topic, and domain.
-
-- `requirements.txt`  
-  Python dependencies.
-
-- `.gitignore`  
-  Basic ignores for Python projects (virtual env, cache files, etc.).
+All logic is inside `main.py` to keep the project minimal.
 
 ---
 
-## Requirements
+## **Project structure**
 
-- Python 3.10+ recommended
-- A valid API key for the LLM provider you want to use via LiteLLM  
-  (the example assumes OpenAI and uses the `OPENAI_API_KEY` environment variable).
+You can keep all files in the root directory.
+
+```
+autodoc-litellm/
+│
+├─ main.py           # main demo script (LLM → RDF → SHACL → semantic search)
+├─ ontology.ttl      # minimal RDF/OWL ontology
+├─ shapes.ttl        # SHACL validation rules
+├─ requirements.txt  # Python dependencies
+└─ .gitignore        # ignore venv, cache files, etc.
+```
+
+No nested folders are required.
 
 ---
 
-## Installation
+## **Files**
+
+### `main.py`
+
+Runs the full pipeline:
+metadata extraction → RDF graph → SHACL validation → semantic search.
+
+### `ontology.ttl`
+
+Defines a simple `Document` class and three properties:
+`ex:title`, `ex:topic`, `ex:domain`.
+
+### `shapes.ttl`
+
+Defines SHACL constraints requiring all three fields to appear once.
+
+### `requirements.txt`
+
+Minimal list of Python dependencies.
+
+### `.gitignore`
+
+Standard Python ignores:
+`__pycache__/`, `.venv/`, `.DS_Store`, etc.
+
+---
+
+## **Requirements**
+
+* Python **3.10+** recommended
+* A valid API key for your LLM provider (example: `OPENAI_API_KEY` for OpenAI through LiteLLM)
+
+---
+
+## **Installation**
 
 ```bash
 git clone https://github.com/<your-username>/autodoc-litellm.git
 cd autodoc-litellm
+
+# create virtual environment
 python -m venv .venv
-source .venv/bin/activate  # on Windows: .venv\Scripts\activate
+source .venv/bin/activate     # Windows: .venv\Scripts\activate
+
+# install dependencies
 pip install -r requirements.txt
+```
+
+---
+
+## **Run the demo**
+
+```bash
+export OPENAI_API_KEY="your-key"
+python main.py
+```
+
+(Windows PowerShell)
+
+```powershell
+setx OPENAI_API_KEY "your-key"
+python main.py
+```
+
+---
+
+## **Notes**
+
+* All logic is intentionally simple and in one file.
+* You can adapt this structure to a larger project later.
+* Ontology and SHACL shapes are minimal on purpose.
+
+
