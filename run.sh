@@ -7,5 +7,5 @@ if [ -z "$OPENAI_API_KEY" ]; then
     exit 1
 fi
 
-python src/main.py
+python main.py
 
