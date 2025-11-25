@@ -22,11 +22,11 @@ EX = Namespace("http://example.org/doc#")
 
 # Base directory for ontology files
 BASE = Path(__file__).resolve().parent
-ONTOLOGY_FILE = BASE.parent / "ontology" / "ontology.ttl"
-SHAPES_FILE = BASE.parent / "ontology" / "shapes.ttl"
+ONTOLOGY_FILE = BASE.parent / "ontology.ttl" 
+SHAPES_FILE = BASE.parent / "shapes.ttl"
 
 # Example input document (same as data/example_doc.md)
-DOC_TEXT = Path(BASE.parent / "data" / "example_doc.md").read_text()
+DOC_TEXT = Path(BASE.parent / "example_doc.md").read_text()
 
 
 def call_llm_for_metadata(doc_text: str) -> dict:
