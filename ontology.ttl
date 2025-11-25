@@ -1,19 +1,19 @@
-@prefix ex:   <http://example.org/doc#> .
-@prefix rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix ex: <http://example.org/doc#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix owl:  <http://www.w3.org/2002/07/owl#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
 
 ex:Document a owl:Class ;
-    rdfs:label "Technical Document" .
+    rdfs:label "Document" .
 
 ex:title a owl:DatatypeProperty ;
     rdfs:domain ex:Document ;
-    rdfs:range  rdfs:Literal .
+    rdfs:range rdfs:Literal .
 
 ex:topic a owl:DatatypeProperty ;
     rdfs:domain ex:Document ;
-    rdfs:range  rdfs:Literal .
+    rdfs:range rdfs:Literal .
 
 ex:domain a owl:DatatypeProperty ;
     rdfs:domain ex:Document ;
-    rdfs:range  rdfs:Literal .
+    rdfs:range rdfs:Literal .
