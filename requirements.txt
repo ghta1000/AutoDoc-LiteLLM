@@ -2,3 +2,4 @@ rdflib
 pyshacl
 sentence-transformers
 litellm
+torch
